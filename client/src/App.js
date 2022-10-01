@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Webcam from "react-webcam";
+import Upload from './Upload.js';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Container style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
         <WebcamStreamCapture></WebcamStreamCapture>
       </Container>
+      <Upload></Upload>
       <br />
     </>
   );
@@ -67,6 +69,7 @@ const WebcamStreamCapture = () => {
       });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
+      localStorage.setItem("recording", url);
       document.body.appendChild(a);
       a.style = "display: none";
       a.href = url;
