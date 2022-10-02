@@ -7,6 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Webcam from "react-webcam";
 import Upload from './Upload.js';
+import Classify from './Classify.js'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
+      <Classify></Classify>
       <Container style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
         <WebcamStreamCapture></WebcamStreamCapture>
       </Container>
@@ -79,17 +81,19 @@ const WebcamStreamCapture = () => {
       setRecordedChunks([]);
     }
   }, [recordedChunks]);
+  
+  
 
   return (
     <>
       <Webcam audio={false} ref={webcamRef} />
       {capturing ? (
-        <button type="button" class="btn btn-outline-primary" onClick={handleStopCaptureClick}>Stop Capture</button>
+        <button type="button" className="btn btn-outline-primary" onClick={handleStopCaptureClick}>Stop Capture</button>
       ) : (
-        <button type="button" class="btn btn-outline-primary" onClick={handleStartCaptureClick}>Start Capture</button>
+        <button type="button" className="btn btn-outline-primary" onClick={handleStartCaptureClick}>Start Capture</button>
       )}
       {recordedChunks.length > 0 && (
-        <button type="button" class="btn btn-outline-primary" onClick={handleDownload}>Download</button>
+        <button type="button" className="btn btn-outline-primary" onClick={handleDownload}>Download</button>
       )}
     </>
   );
